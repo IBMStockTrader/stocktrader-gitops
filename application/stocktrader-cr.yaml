@@ -1,0 +1,248 @@
+apiVersion: operators.ibm.com/v1
+kind: StockTrader
+metadata:
+  name: ceh
+spec:
+  s3:
+    bucket: stock-trader
+    enabled: false
+    endpointUrl: 'https://s3.us-east.cloud-object-storage.appdomain.cloud'
+    location: us
+    resourceInstanceId: >-
+      crn:v1:bluemix:public:cloud-object-storage:global:a/b71ac2564ef0b98f1032d189795994dc:f7e4281d-a7f2-4923-8e6b-07f99ac93bbd::
+  global:
+    monitoring: true
+    auth: basic
+    route: true
+    istioNamespace: mesh
+    healthCheck: true
+    specifyCerts: true
+    certs: |
+      -----BEGIN CERTIFICATE-----
+      MIIDDzCCAfegAwIBAgIJANEH58y2/kzHMA0GCSqGSIb3DQEBCwUAMB4xHDAaBgNV
+      BAMME0lCTSBDbG91ZCBEYXRhYmFzZXMwHhcNMTgwNjI1MTQyOTAwWhcNMjgwNjIy
+      MTQyOTAwWjAeMRwwGgYDVQQDDBNJQk0gQ2xvdWQgRGF0YWJhc2VzMIIBIjANBgkq
+      hkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA8lpaQGzcFdGqeMlmqjffMPpIQhqpd8qJ
+      Pr3bIkrXJbTcJJ9uIckSUcCjw4Z/rSg8nnT13SCcOl+1to+7kdMiU8qOWKiceYZ5
+      y+yZYfCkGaiZVfazQBm45zBtFWv+AB/8hfCTdNF7VY4spaA3oBE2aS7OANNSRZSK
+      pwy24IUgUcILJW+mcvW80Vx+GXRfD9Ytt6PRJgBhYuUBpgzvngmCMGBn+l2KNiSf
+      weovYDCD6Vngl2+6W9QFAFtWXWgF3iDQD5nl/n4mripMSX6UG/n6657u7TDdgkvA
+      1eKI2FLzYKpoKBe5rcnrM7nHgNc/nCdEs5JecHb1dHv1QfPm6pzIxwIDAQABo1Aw
+      TjAdBgNVHQ4EFgQUK3+XZo1wyKs+DEoYXbHruwSpXjgwHwYDVR0jBBgwFoAUK3+X
+      Zo1wyKs+DEoYXbHruwSpXjgwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQsFAAOC
+      AQEAJf5dvlzUpqaix26qJEuqFG0IP57QQI5TCRJ6Xt/supRHo63eDvKw8zR7tlWQ
+      lV5P0N2xwuSl9ZqAJt7/k/3ZeB+nYwPoyO3KvKvATunRvlPBn4FWVXeaPsG+7fhS
+      qsejmkyonYw77HRzGOzJH4Zg8UN6mfpbaWSsyaExvqknCp9SoTQP3D67AzWqb1zY
+      doqqgGIZ2nxCkp5/FXxF/TMb55vteTQwfgBy60jVVkbF7eVOWCv0KaNHPF5hrqbN
+      i+3XjJ7/peF3xMvTMoy35DcT3E2ZeSVjouZs15O90kI3k2daS2OHJABW0vSj4nLz
+      +PQzp/B9cQmOO8dCe049Q3oaUA==
+      -----END CERTIFICATE-----
+      -----BEGIN CERTIFICATE-----
+      MIIDLTCCAhWgAwIBAgIJAInyxowQL6pGMA0GCSqGSIb3DQEBCwUAMC0xEzARBgNV
+      BAoMCmlvLnN0cmltemkxFjAUBgNVBAMMDWNsdXN0ZXItY2EgdjAwHhcNMjEwNTA2
+      MTUzNzMyWhcNMjIwNTA2MTUzNzMyWjAtMRMwEQYDVQQKDAppby5zdHJpbXppMRYw
+      FAYDVQQDDA1jbHVzdGVyLWNhIHYwMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB
+      CgKCAQEAt9MCLpQOPoycKRcxBRqgGknSjGyxU4LEsrWXNcCUwY7SZOSk7E8Ix+03
+      PnxAKdyDUz0jMADtD5Zj5mfm1wYMTam2i4HWtc9KF5QayGWvQwxiTErObDOPbsfC
+      Fzz+HVFqZM1otx56f4ImQGPE9cVcByWRk2yziOu4DI05D/i37KBhxQWnF8/816Nk
+      5yKyfqvKCgs74rmzGN9+4VNJtAwwgax8fIhANeWC8wJ7s/QzzikiXP9VKEL/+s5L
+      IbQDAN61CuCCmFphzQf7dAVMq6XXejk+z34FqVHIBh8gO9FkXmCqXIaheDNA6wVt
+      8LfWOq345Kfu9EN6slYn8WicW+LLtwIDAQABo1AwTjAdBgNVHQ4EFgQUddw+tRQf
+      kqwkXz46b85rCu9wjZAwHwYDVR0jBBgwFoAUddw+tRQfkqwkXz46b85rCu9wjZAw
+      DAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAGCqfNPdWMEIThJfnY65Q
+      RN09T1ds8jYtlzCXKKXRkC+VT8BABxetR1F/2bjK4+bK3LDfvOfv9SYCMcoUGC9O
+      Wk7k2pyJlpLYiTEePdBu7phvw7ZwxlJkECLIo31d+HXBCxwiDRVGw4ucy+1Zzvcr
+      IKpwRvHCzB4RgRL7JQMKDJVp33HbYX0r+/FpPzZhoGn9D0BkAKJ+HhOwBJqrUGE6
+      hJ82u7UJ6qlRGR4sRyoylaWyd68FZXQ0GAdBT5UuH37GJ8K/3msidGly+qIFEvAU
+      QUZ0CfArXxQuePixj0LZk8UEu4jtsZHsHOJdO83x01HWQarn8Kqqd0G+uc3t3X7U
+      tQ==
+      -----END CERTIFICATE-----
+    istio: false
+    ingress: false
+    jsonLogging: false
+  mq:
+    channel: CLOUD.APP.SVRCONN
+    host: qm1-4565.qm.us-south.mq.appdomain.cloud
+    port: 30341
+    queue: NotificationQ
+    queueManager: QM1
+  messaging:
+    autoscale: false
+    cpuThreshold: 75
+    enabled: true
+    image:
+      repository: ibmstocktrader/messaging
+      tag: latest
+    maxReplicas: 10
+    notification:
+      url: 'http://{{ .Release.Name }}-notification-service:9080/notification'
+    replicas: 1
+  notificationSlack:
+    autoscale: false
+    cpuThreshold: 75
+    enabled: true
+    image:
+      repository: ibmstocktrader/notification-slack
+      tag: latest
+    maxReplicas: 10
+    replicas: 1
+  openwhisk:
+    id: bc2b0a37-0554-4658-9ebe-ae068eb1aa22
+    password: 45t2FZC1q1bv6OYUztZUjkYFaVNs5klaviHoE6gFvgEedu9akiE1YW6lChOxUgJb
+    url: >-
+      https://openwhisk.ng.bluemix.net/api/v1/namespaces/jalcorn%40us.ibm.com_dev/actions/PostLoyaltyLevelToSlack
+  stockQuote:
+    iexApiKey: <your IEX API key>
+    cpuThreshold: 75
+    iexTrading: 'https://cloud.iexapis.com/stable/stock'
+    url: 'http://{{ .Release.Name }}-stock-quote-service:9080/stock-quote'
+    apiConnect: 'https://api.us.apiconnect.ibmcloud.com/jalcornusibmcom-dev/sb/stocks'
+    autoscale: false
+    image:
+      repository: ibmstocktrader/stock-quote
+      tag: latest
+    replicas: 1
+    maxReplicas: 10
+  kafka:
+    accountTopic: account
+    address: >-
+      broker-4-63pby2k66qq17x9z.kafka.svc01.us-south.eventstreams.cloud.ibm.com:9093,broker-1-63pby2k66qq17x9z.kafka.svc01.us-south.eventstreams.cloud.ibm.com:9093,broker-0-63pby2k66qq17x9z.kafka.svc01.us-south.eventstreams.cloud.ibm.com:9093,broker-2-63pby2k66qq17x9z.kafka.svc01.us-south.eventstreams.cloud.ibm.com:9093,broker-5-63pby2k66qq17x9z.kafka.svc01.us-south.eventstreams.cloud.ibm.com:9093,broker-3-63pby2k66qq17x9z.kafka.svc01.us-south.eventstreams.cloud.ibm.com:9093
+    historyTopic: stocktrader
+    portfolioTopic: portfolio
+  jwt:
+    audience: stock-trader
+    issuer: 'http://stock-trader.ibm.com'
+  ldap:
+    baseDN: o=ibm.com
+    host: bluepages.ibm.com
+    port: 389
+    realm: BluePages
+  portfolio:
+    autoscale: false
+    cpuThreshold: 75
+    image:
+      repository: ibmstocktrader/portfolio
+      tag: latest
+    maxReplicas: 10
+    replicas: 2
+    url: 'http://{{ .Release.Name }}-portfolio-service:9080/portfolio'
+  watson:
+    url: >-
+      https://api.us-south.tone-analyzer.watson.cloud.ibm.com/instances/195be178-5f78-467f-8355-99ee5772f4c2/v3/tone?version=2017-09-21&sentences=false
+  brokerCQRS:
+    autoscale: false
+    cpuThreshold: 75
+    enabled: false
+    image:
+      repository: ibmstocktrader/broker-cqrs
+      tag: latest
+    maxReplicas: 10
+    replicas: 1
+    url: 'http://{{ .Release.Name }}-broker-cqrs-service:9080/brokerCQRS'
+  notificationTwitter:
+    autoscale: false
+    cpuThreshold: 75
+    enabled: false
+    image:
+      repository: ibmstocktrader/notification-twitter
+      tag: vault
+    maxReplicas: 10
+    replicas: 1
+  collector:
+    autoscale: false
+    cpuThreshold: 75
+    enabled: false
+    image:
+      repository: ibmstocktrader/collector
+      tag: latest
+    maxReplicas: 10
+    replicas: 1
+    url: 'http://{{ .Release.Name }}-collector-service:9080/collector'
+  account:
+    autoscale: false
+    cpuThreshold: 75
+    enabled: true
+    image:
+      repository: ibmstocktrader/account
+      tag: latest
+    maxReplicas: 10
+    replicas: 2
+    url: 'http://{{ .Release.Name }}-account-service:9080/account'
+  trader:
+    autoscale: false
+    cpuThreshold: 75
+    enabled: true
+    image:
+      repository: quay.io/gas_stocktrader/trader
+      tag: "c47a528"
+    maxReplicas: 10
+    replicas: 1
+  tradeHistory:
+    autoscale: false
+    cpuThreshold: 75
+    enabled: false
+    image:
+      repository: rshrestha13/trade-history
+      tag: latest
+    maxReplicas: 10
+    replicas: 1
+    url: 'http://{{ .Release.Name }}-trade-history-service:9080/trade-history'
+  tradr:
+    autoscale: false
+    cpuThreshold: 75
+    enabled: false
+    image:
+      repository: ibmstocktrader/tradr
+      tag: latest
+    maxReplicas: 10
+    replicas: 1
+  looper:
+    autoscale: false
+    cpuThreshold: 75
+    enabled: false
+    image:
+      repository: ibmstocktrader/looper
+      tag: latest
+    maxReplicas: 10
+    replicas: 1
+    url: 'http://{{ .Release.Name }}-looper-service:9080/looper'
+  vault:
+    enabled: true
+    path: ceh/data/stocktrader/credentials
+    role: stocktrader
+  cloudant:
+    collector: evidence
+    database: account
+    url: >-
+      https://couchdb-connect-couchdb.devops-prereqs-44-a01ee4194ed985a1e32b1d96fd4ae346-0000.us-east.containers.appdomain.cloud/
+  mongo:
+    authDB: admin
+    database: ibmclouddb
+    ip: >-
+      915ce0b3-e08f-4aec-b58a-47e80442c6b4-0.blijs0dd0dcr4f55oehg.databases.appdomain.cloud
+    port: 30926
+  odm:
+    url: >-
+      https://odm-connect-cp4a.devops-prereqs-44-a01ee4194ed985a1e32b1d96fd4ae346-0000.us-east.containers.appdomain.cloud/DecisionService/rest/v1/ICP_Trader_Dev_1/determineLoyalty
+  oidc:
+    clientId: trader
+    clientSecret: 8a8d5681-1580-4461-a45b-d19fce955b02
+    discoveryUrl: >-
+      https://keycloak-keycloak.devops-prereqs-44-a01ee4194ed985a1e32b1d96fd4ae346-0000.us-east.containers.appdomain.cloud/auth/realms/master/.well-known/openid-configuration
+  broker:
+    autoscale: false
+    cpuThreshold: 75
+    image:
+      repository: ibmstocktrader/broker
+      tag: latest
+    maxReplicas: 10
+    replicas: 2
+    url: 'http://{{ .Release.Name }}-broker-service:9080/broker'
+  database:
+    db: BLUDB
+    host: >-
+      db2-connect-db2.devops-prereqs-44-a01ee4194ed985a1e32b1d96fd4ae346-0000.us-east.containers.appdomain.cloud
+    kind: db2
+    port: 31495
+  redis:
+    cacheInterval: 60
