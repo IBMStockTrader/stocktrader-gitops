@@ -53,6 +53,9 @@ jobs:
     - name: Deploy to IKS
       run: |
         ibmcloud ks cluster ls
+        echo $IKS_CLUSTER
+        ibmcloud ks cluster ls | grep dev
+        
         ibmcloud ks cluster config --cluster $IKS_CLUSTER
         kubectl config current-context
         oc login -u apikey -p $IBM_CLOUD_API_KEY
