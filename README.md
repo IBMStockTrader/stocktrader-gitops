@@ -1,1 +1,1 @@
-# stocktrader-gitops
+Gitops repo to store StockTrader resources
