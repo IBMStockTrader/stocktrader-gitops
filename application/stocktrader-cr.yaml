@@ -173,8 +173,8 @@ spec:
     cpuThreshold: 75
     enabled: true
     image:
-      repository: /gas_stocktrader/trader
-      tag: "ce265a1efef206d59e73fc6ee1e14b7082ee9a50"
+      repository: quay.io/gas_stocktrader/trader
+      tag: "1f6eb8f46abf15c1461be2b94a5b38806597a3eb"
     maxReplicas: 10
     replicas: 1
   tradeHistory:
