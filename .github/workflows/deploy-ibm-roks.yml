@@ -8,7 +8,7 @@ name: Deploy to ROKS
 on: 
   push:
     branches:
-      - master 
+      - main 
     paths-ignore:
     - '.github/**'    
 
