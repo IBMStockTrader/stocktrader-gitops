@@ -121,8 +121,8 @@ spec:
     autoscale: false
     cpuThreshold: 75
     image:
-      repository: quay.io/gas_stocktrader/portfolio
-      tag: e4fe8fc62a28e09b6abbe139dde613e97c2c4346
+      repository: quay.io/ibmstocktrader/portfolio
+      tag: 16e33a724624dbeb9e47ba5ba0a2535368118b3f
     maxReplicas: 10
     replicas: 2
     url: 'http://{{ .Release.Name }}-portfolio-service:9080/portfolio'
