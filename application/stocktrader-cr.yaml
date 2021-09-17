@@ -3,19 +3,25 @@ kind: StockTrader
 metadata:
   name: ceh
 spec:
-  s3:
-    bucket: stock-trader
-    enabled: false
-    endpointUrl: 'https://s3.us-east.cloud-object-storage.appdomain.cloud'
-    location: us
-    resourceInstanceId: >-
-      crn:v1:bluemix:public:cloud-object-storage:global:a/b71ac2564ef0b98f1032d189795994dc:f7e4281d-a7f2-4923-8e6b-07f99ac93bbd::
   global:
-    monitoring: true
     auth: basic
-    route: true
-    istioNamespace: mesh
     healthCheck: true
+    monitoring: true
+    ingress: false
+    route: true
+    traceSpec: "*=info"
+    jsonLogging: false
+    disableLogFiles: false
+    istio: false
+    istioNamespace: istio-system
+    externalConfigMap: false
+    configMapName: "{{ .Release.Name }}-config"
+    externalSecret: false
+    secretName: stock-trader-credentials
+    proxyServer: false
+    proxyServerAddress: <your proxy URL>.
+    pullSecret: false
+    pullSecretName: <your pull secret>
     specifyCerts: true
     certs: |
       -----BEGIN CERTIFICATE-----
@@ -57,9 +63,6 @@ spec:
       QUZ0CfArXxQuePixj0LZk8UEu4jtsZHsHOJdO83x01HWQarn8Kqqd0G+uc3t3X7U
       tQ==
       -----END CERTIFICATE-----
-    istio: false
-    ingress: false
-    jsonLogging: false
   mq:
     channel: CLOUD.APP.SVRCONN
     host: qm1-4565.qm.us-south.mq.appdomain.cloud
@@ -207,7 +210,7 @@ spec:
     replicas: 1
     url: 'http://{{ .Release.Name }}-looper-service:9080/looper'
   vault:
-    enabled: true
+    enabled: false
     path: ceh/data/stocktrader/credentials
     role: stocktrader
   cloudant:
@@ -244,5 +247,6 @@ spec:
       db2-connect-db2.devops-prereqs-44-a01ee4194ed985a1e32b1d96fd4ae346-0000.us-east.containers.appdomain.cloud
     kind: db2
     port: 31495
+    ssl: false
   redis:
     cacheInterval: 60
