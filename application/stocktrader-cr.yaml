@@ -16,7 +16,7 @@ spec:
     istioNamespace: istio-system
     externalConfigMap: false
     configMapName: "{{ .Release.Name }}-config"
-    externalSecret: false
+    externalSecret: true
     secretName: stock-trader-credentials
     proxyServer: false
     proxyServerAddress: <your proxy URL>.
