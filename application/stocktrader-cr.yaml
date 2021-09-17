@@ -71,7 +71,7 @@ spec:
     cpuThreshold: 75
     enabled: true
     image:
-      repository: ibmstocktrader/messaging
+      repository: quay.io/ibmstocktrader/messaging
       tag: latest
     maxReplicas: 10
     notification:
@@ -82,7 +82,7 @@ spec:
     cpuThreshold: 75
     enabled: true
     image:
-      repository: ibmstocktrader/notification-slack
+      repository: quay.io/ibmstocktrader/notification-slack
       tag: latest
     maxReplicas: 10
     replicas: 1
@@ -99,7 +99,7 @@ spec:
     apiConnect: 'https://api.us.apiconnect.ibmcloud.com/jalcornusibmcom-dev/sb/stocks'
     autoscale: false
     image:
-      repository: ibmstocktrader/stock-quote
+      repository: quay.io/ibmstocktrader/stock-quote
       tag: latest
     replicas: 1
     maxReplicas: 10
@@ -134,7 +134,7 @@ spec:
     cpuThreshold: 75
     enabled: false
     image:
-      repository: ibmstocktrader/broker-cqrs
+      repository: quay.io/ibmstocktrader/broker-cqrs
       tag: latest
     maxReplicas: 10
     replicas: 1
@@ -144,7 +144,7 @@ spec:
     cpuThreshold: 75
     enabled: false
     image:
-      repository: ibmstocktrader/notification-twitter
+      repository: quay.io/ibmstocktrader/notification-twitter
       tag: vault
     maxReplicas: 10
     replicas: 1
@@ -153,7 +153,7 @@ spec:
     cpuThreshold: 75
     enabled: false
     image:
-      repository: ibmstocktrader/collector
+      repository: quay.io/ibmstocktrader/collector
       tag: latest
     maxReplicas: 10
     replicas: 1
@@ -163,7 +163,7 @@ spec:
     cpuThreshold: 75
     enabled: true
     image:
-      repository: ibmstocktrader/account
+      repository: quay.io/ibmstocktrader/account
       tag: latest
     maxReplicas: 10
     replicas: 2
@@ -182,7 +182,7 @@ spec:
     cpuThreshold: 75
     enabled: false
     image:
-      repository: rshrestha13/trade-history
+      repository: quay.io/ibmstocktrader/trade-history
       tag: latest
     maxReplicas: 10
     replicas: 1
@@ -192,7 +192,7 @@ spec:
     cpuThreshold: 75
     enabled: false
     image:
-      repository: ibmstocktrader/tradr
+      repository: quay.io/ibmstocktrader/tradr
       tag: latest
     maxReplicas: 10
     replicas: 1
@@ -201,7 +201,7 @@ spec:
     cpuThreshold: 75
     enabled: false
     image:
-      repository: ibmstocktrader/looper
+      repository: quay.io/ibmstocktrader/looper
       tag: latest
     maxReplicas: 10
     replicas: 1
@@ -233,7 +233,7 @@ spec:
     autoscale: false
     cpuThreshold: 75
     image:
-      repository: ibmstocktrader/broker
+      repository: quay.io/ibmstocktrader/broker
       tag: latest
     maxReplicas: 10
     replicas: 2
