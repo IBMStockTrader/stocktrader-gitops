@@ -72,7 +72,7 @@ spec:
     enabled: true
     image:
       repository: quay.io/ibmstocktrader/messaging
-      tag: latest
+      tag: 1.0.0
     maxReplicas: 10
     notification:
       url: 'http://{{ .Release.Name }}-notification-service:9080/notification'
@@ -83,7 +83,7 @@ spec:
     enabled: true
     image:
       repository: quay.io/ibmstocktrader/notification-slack
-      tag: latest
+      tag: 1.0.0
     maxReplicas: 10
     replicas: 1
   openwhisk:
@@ -100,7 +100,7 @@ spec:
     autoscale: false
     image:
       repository: quay.io/ibmstocktrader/stock-quote
-      tag: latest
+      tag: 1.0.0
     replicas: 1
     maxReplicas: 10
   kafka:
@@ -135,7 +135,7 @@ spec:
     enabled: false
     image:
       repository: quay.io/ibmstocktrader/broker-cqrs
-      tag: latest
+      tag: 1.0.0
     maxReplicas: 10
     replicas: 1
     url: 'http://{{ .Release.Name }}-broker-cqrs-service:9080/brokerCQRS'
@@ -145,7 +145,7 @@ spec:
     enabled: false
     image:
       repository: quay.io/ibmstocktrader/notification-twitter
-      tag: vault
+      tag: 1.0.0
     maxReplicas: 10
     replicas: 1
   collector:
@@ -154,7 +154,7 @@ spec:
     enabled: false
     image:
       repository: quay.io/ibmstocktrader/collector
-      tag: latest
+      tag: 1.0.0
     maxReplicas: 10
     replicas: 1
     url: 'http://{{ .Release.Name }}-collector-service:9080/collector'
@@ -164,7 +164,7 @@ spec:
     enabled: true
     image:
       repository: quay.io/ibmstocktrader/account
-      tag: latest
+      tag: 1.0.0
     maxReplicas: 10
     replicas: 2
     url: 'http://{{ .Release.Name }}-account-service:9080/account'
@@ -183,7 +183,7 @@ spec:
     enabled: false
     image:
       repository: quay.io/ibmstocktrader/trade-history
-      tag: latest
+      tag: 1.0.0
     maxReplicas: 10
     replicas: 1
     url: 'http://{{ .Release.Name }}-trade-history-service:9080/trade-history'
@@ -193,7 +193,7 @@ spec:
     enabled: false
     image:
       repository: quay.io/ibmstocktrader/tradr
-      tag: latest
+      tag: 1.0.0
     maxReplicas: 10
     replicas: 1
   looper:
@@ -202,7 +202,7 @@ spec:
     enabled: false
     image:
       repository: quay.io/ibmstocktrader/looper
-      tag: latest
+      tag: 1.0.0
     maxReplicas: 10
     replicas: 1
     url: 'http://{{ .Release.Name }}-looper-service:9080/looper'
@@ -234,7 +234,7 @@ spec:
     cpuThreshold: 75
     image:
       repository: quay.io/ibmstocktrader/broker
-      tag: latest
+      tag: 1.0.0
     maxReplicas: 10
     replicas: 2
     url: 'http://{{ .Release.Name }}-broker-service:9080/broker'
