@@ -19,7 +19,7 @@ spec:
     externalSecret: true
     secretName: stock-trader-credentials
     proxyServer: false
-    proxyServerAddress: <your proxy URL>.
+    proxyServerAddress: <your proxy URL>
     pullSecret: false
     pullSecretName: <your pull secret>
     specifyCerts: true
@@ -242,9 +242,9 @@ spec:
   database:
     db: BLUDB
     host: >-
-      db2-connect-db2.devops-prereqs-44-a01ee4194ed985a1e32b1d96fd4ae346-0000.us-east.containers.appdomain.cloud
+      9c1dd5a4-e195-4cd6-8e5a-62255633e297.bv7c3o6d0vfhru3npds0.databases.appdomain.cloud
     kind: db2
-    port: 31495
+    port: 31069
     ssl: false
   redis:
     cacheInterval: 60
