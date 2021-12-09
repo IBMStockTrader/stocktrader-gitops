@@ -251,4 +251,4 @@ spec:
   trade-history:
     image:
       repository: quay.io/ibmstocktrader/trade-history
-      tag: 4ea7f277b136ce9bcbfde1f43bb1a3233b054ace
+      tag: fd1cdafed59eded7f628febf4705a558e2ca3572
