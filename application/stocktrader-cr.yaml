@@ -75,7 +75,7 @@ spec:
     enabled: true
     image:
       repository: quay.io/ibmstocktrader/messaging
-      tag: 1da21f8c2e3fb583ddf6a9e49284f83311cb3e34
+      tag: 97a0ba06b4a475549d1a52c455d8fddf9c70b163
     maxReplicas: 10
     notification:
       url: 'http://{{ .Release.Name }}-notification-service:9080/notification'
