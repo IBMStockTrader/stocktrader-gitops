@@ -255,4 +255,4 @@ spec:
   stock-quote:
     image:
       repository: quay.io/ibmstocktrader/stock-quote
-      tag: 0fbf0f37eb69a709c14fe5b53a1f3d16b6bef954
+      tag: 5a1adfb5233fa5370010f4526241dfb17ab7f4d1
