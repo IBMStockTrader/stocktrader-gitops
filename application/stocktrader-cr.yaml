@@ -64,6 +64,7 @@ spec:
       tQ==
       -----END CERTIFICATE-----
   mq:
+    kind: ibm-mq
     channel: CLOUD.APP.SVRCONN
     host: qm1-4565.qm.us-south.mq.appdomain.cloud
     port: 30341
