@@ -264,4 +264,4 @@ spec:
   notification-twitter:
     image:
       repository: quay.io/ibmstocktrader/notification-twitter
-      tag: a73c36a68c5982c7065ffc99d5852cc9b4474801
+      tag: 924245b8afa6b21a0768bd9c28ffaae1badb50be
