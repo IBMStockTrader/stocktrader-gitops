@@ -261,3 +261,7 @@ spec:
     image:
       repository: quay.io/ibmstocktrader/notification-slack
       tag: b8719b60b2db1c5b5de0befc80ae0eb55c07304b
+  notification-twitter:
+    image:
+      repository: quay.io/ibmstocktrader/notification-twitter
+      tag: a73c36a68c5982c7065ffc99d5852cc9b4474801
