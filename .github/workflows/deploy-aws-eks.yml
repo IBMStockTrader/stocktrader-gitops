@@ -9,7 +9,7 @@
 # - Have the StockTrader operator installed
 # - Have all the required services already deployed.
 # - Secret Access Key and ID set up in IAM and set up as repo secret (AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY)
-# - Secrets CLUSTER_NAMESPACE, AWS_REGION, and CLUSTER_NAME also set up in the repo.
+# - Secrets AWS_CLUSTER_NAMESPACE, AWS_REGION, and AWS_CLUSTER_NAME also set up in the repo.
 
 name: Deploy to EKS
 
