@@ -216,7 +216,7 @@ spec:
   tradeHistory:
     autoscale: false
     cpuThreshold: 75
-    enabled: false
+    enabled: true
     image:
       repository: >-
         719273936648.dkr.ecr.us-east-2.amazonaws.com/ibmstocktrader/trade-history
