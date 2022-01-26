@@ -22,7 +22,7 @@ on:
 
 # Environment variables available to all jobs and steps in this workflow
 env:
-  CLUSTER_NAMESPACE: ${{ secrets.CLUSTER_NAMESPACE }}
+  CLUSTER_NAMESPACE: ${{ secrets.AWS_CLUSTER_NAMESPACE }}
   
 jobs:  
   deploy-to-eks:
@@ -40,5 +40,5 @@ jobs:
         aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws_region: ${{ secrets.AWS_REGION }}
-        cluster_name: ${{ secrets.CLUSTER_NAME }}
+        cluster_name: ${{ secrets.AWS_CLUSTER_NAME }}
         args: apply -f application/stocktrader-aws-eks-cr.yml -n ${CLUSTER_NAMESPACE}
