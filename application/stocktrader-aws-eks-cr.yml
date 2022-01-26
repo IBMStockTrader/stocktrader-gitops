@@ -1,7 +1,7 @@
 apiVersion: operators.ibm.com/v1
 kind: StockTrader
 metadata:
-  name: ceh
+  name: gitops-stocktrader
 spec:
   global:
     auth: basic
@@ -216,7 +216,7 @@ spec:
   tradeHistory:
     autoscale: false
     cpuThreshold: 75
-    enabled: false
+    enabled: true
     image:
       repository: >-
         719273936648.dkr.ecr.us-east-2.amazonaws.com/ibmstocktrader/trade-history
