@@ -1,0 +1,298 @@
+apiVersion: operators.ibm.com/v1
+kind: StockTrader
+metadata:
+  name: ceh
+spec:
+  global:
+    auth: basic
+    healthCheck: true
+    monitoring: true
+    ingress: false
+    route: false
+    traceSpec: "*=info"
+    jsonLogging: true
+    istio: false
+    istioNamespace: istio-system
+    externalConfigMap: false
+    configMapName: "{{ .Release.Name }}-config"
+    externalSecret: true
+    secretName: stock-trader-credentials
+    proxyServer: false
+    proxyServerAddress: <your proxy URL>
+    pullSecret: false
+    pullSecretName: <your pull secret>
+    specifyCerts: true
+    certs: |
+      -----BEGIN CERTIFICATE-----
+      MIIDDzCCAfegAwIBAgIJANEH58y2/kzHMA0GCSqGSIb3DQEBCwUAMB4xHDAaBgNV
+      BAMME0lCTSBDbG91ZCBEYXRhYmFzZXMwHhcNMTgwNjI1MTQyOTAwWhcNMjgwNjIy
+      MTQyOTAwWjAeMRwwGgYDVQQDDBNJQk0gQ2xvdWQgRGF0YWJhc2VzMIIBIjANBgkq
+      hkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA8lpaQGzcFdGqeMlmqjffMPpIQhqpd8qJ
+      Pr3bIkrXJbTcJJ9uIckSUcCjw4Z/rSg8nnT13SCcOl+1to+7kdMiU8qOWKiceYZ5
+      y+yZYfCkGaiZVfazQBm45zBtFWv+AB/8hfCTdNF7VY4spaA3oBE2aS7OANNSRZSK
+      pwy24IUgUcILJW+mcvW80Vx+GXRfD9Ytt6PRJgBhYuUBpgzvngmCMGBn+l2KNiSf
+      weovYDCD6Vngl2+6W9QFAFtWXWgF3iDQD5nl/n4mripMSX6UG/n6657u7TDdgkvA
+      1eKI2FLzYKpoKBe5rcnrM7nHgNc/nCdEs5JecHb1dHv1QfPm6pzIxwIDAQABo1Aw
+      TjAdBgNVHQ4EFgQUK3+XZo1wyKs+DEoYXbHruwSpXjgwHwYDVR0jBBgwFoAUK3+X
+      Zo1wyKs+DEoYXbHruwSpXjgwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQsFAAOC
+      AQEAJf5dvlzUpqaix26qJEuqFG0IP57QQI5TCRJ6Xt/supRHo63eDvKw8zR7tlWQ
+      lV5P0N2xwuSl9ZqAJt7/k/3ZeB+nYwPoyO3KvKvATunRvlPBn4FWVXeaPsG+7fhS
+      qsejmkyonYw77HRzGOzJH4Zg8UN6mfpbaWSsyaExvqknCp9SoTQP3D67AzWqb1zY
+      doqqgGIZ2nxCkp5/FXxF/TMb55vteTQwfgBy60jVVkbF7eVOWCv0KaNHPF5hrqbN
+      i+3XjJ7/peF3xMvTMoy35DcT3E2ZeSVjouZs15O90kI3k2daS2OHJABW0vSj4nLz
+      +PQzp/B9cQmOO8dCe049Q3oaUA==
+      -----END CERTIFICATE-----
+      -----BEGIN CERTIFICATE-----
+      MIIDLTCCAhWgAwIBAgIJAInyxowQL6pGMA0GCSqGSIb3DQEBCwUAMC0xEzARBgNV
+      BAoMCmlvLnN0cmltemkxFjAUBgNVBAMMDWNsdXN0ZXItY2EgdjAwHhcNMjEwNTA2
+      MTUzNzMyWhcNMjIwNTA2MTUzNzMyWjAtMRMwEQYDVQQKDAppby5zdHJpbXppMRYw
+      FAYDVQQDDA1jbHVzdGVyLWNhIHYwMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB
+      CgKCAQEAt9MCLpQOPoycKRcxBRqgGknSjGyxU4LEsrWXNcCUwY7SZOSk7E8Ix+03
+      PnxAKdyDUz0jMADtD5Zj5mfm1wYMTam2i4HWtc9KF5QayGWvQwxiTErObDOPbsfC
+      Fzz+HVFqZM1otx56f4ImQGPE9cVcByWRk2yziOu4DI05D/i37KBhxQWnF8/816Nk
+      5yKyfqvKCgs74rmzGN9+4VNJtAwwgax8fIhANeWC8wJ7s/QzzikiXP9VKEL/+s5L
+      IbQDAN61CuCCmFphzQf7dAVMq6XXejk+z34FqVHIBh8gO9FkXmCqXIaheDNA6wVt
+      8LfWOq345Kfu9EN6slYn8WicW+LLtwIDAQABo1AwTjAdBgNVHQ4EFgQUddw+tRQf
+      kqwkXz46b85rCu9wjZAwHwYDVR0jBBgwFoAUddw+tRQfkqwkXz46b85rCu9wjZAw
+      DAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAGCqfNPdWMEIThJfnY65Q
+      RN09T1ds8jYtlzCXKKXRkC+VT8BABxetR1F/2bjK4+bK3LDfvOfv9SYCMcoUGC9O
+      Wk7k2pyJlpLYiTEePdBu7phvw7ZwxlJkECLIo31d+HXBCxwiDRVGw4ucy+1Zzvcr
+      IKpwRvHCzB4RgRL7JQMKDJVp33HbYX0r+/FpPzZhoGn9D0BkAKJ+HhOwBJqrUGE6
+      hJ82u7UJ6qlRGR4sRyoylaWyd68FZXQ0GAdBT5UuH37GJ8K/3msidGly+qIFEvAU
+      QUZ0CfArXxQuePixj0LZk8UEu4jtsZHsHOJdO83x01HWQarn8Kqqd0G+uc3t3X7U
+      tQ==
+      -----END CERTIFICATE-----
+      -----BEGIN CERTIFICATE-----
+      MIIEBjCCAu6gAwIBAgIJAMc0ZzaSUK51MA0GCSqGSIb3DQEBCwUAMIGPMQswCQYD
+      VQQGEwJVUzEQMA4GA1UEBwwHU2VhdHRsZTETMBEGA1UECAwKV2FzaGluZ3RvbjEi
+      MCAGA1UECgwZQW1hem9uIFdlYiBTZXJ2aWNlcywgSW5jLjETMBEGA1UECwwKQW1h
+      em9uIFJEUzEgMB4GA1UEAwwXQW1hem9uIFJEUyBSb290IDIwMTkgQ0EwHhcNMTkw
+      ODIyMTcwODUwWhcNMjQwODIyMTcwODUwWjCBjzELMAkGA1UEBhMCVVMxEDAOBgNV
+      BAcMB1NlYXR0bGUxEzARBgNVBAgMCldhc2hpbmd0b24xIjAgBgNVBAoMGUFtYXpv
+      biBXZWIgU2VydmljZXMsIEluYy4xEzARBgNVBAsMCkFtYXpvbiBSRFMxIDAeBgNV
+      BAMMF0FtYXpvbiBSRFMgUm9vdCAyMDE5IENBMIIBIjANBgkqhkiG9w0BAQEFAAOC
+      AQ8AMIIBCgKCAQEArXnF/E6/Qh+ku3hQTSKPMhQQlCpoWvnIthzX6MK3p5a0eXKZ
+      oWIjYcNNG6UwJjp4fUXl6glp53Jobn+tWNX88dNH2n8DVbppSwScVE2LpuL+94vY
+      0EYE/XxN7svKea8YvlrqkUBKyxLxTjh+U/KrGOaHxz9v0l6ZNlDbuaZw3qIWdD/I
+      6aNbGeRUVtpM6P+bWIoxVl/caQylQS6CEYUk+CpVyJSkopwJlzXT07tMoDL5WgX9
+      O08KVgDNz9qP/IGtAcRduRcNioH3E9v981QO1zt/Gpb2f8NqAjUUCUZzOnij6mx9
+      McZ+9cWX88CRzR0vQODWuZscgI08NvM69Fn2SQIDAQABo2MwYTAOBgNVHQ8BAf8E
+      BAMCAQYwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUc19g2LzLA5j0Kxc0LjZa
+      pmD/vB8wHwYDVR0jBBgwFoAUc19g2LzLA5j0Kxc0LjZapmD/vB8wDQYJKoZIhvcN
+      AQELBQADggEBAHAG7WTmyjzPRIM85rVj+fWHsLIvqpw6DObIjMWokpliCeMINZFV
+      ynfgBKsf1ExwbvJNzYFXW6dihnguDG9VMPpi2up/ctQTN8tm9nDKOy08uNZoofMc
+      NUZxKCEkVKZv+IL4oHoeayt8egtv3ujJM6V14AstMQ6SwvwvA93EP/Ug2e4WAXHu
+      cbI1NAbUgVDqp+DRdfvZkgYKryjTWd/0+1fS8X1bBZVWzl7eirNVnHbSH2ZDpNuY
+      0SBd8dj5F6ld3t58ydZbrTHze7JJOd8ijySAp4/kiu9UfZWuTPABzDa/DSdz9Dk/
+      zPW4CXXvhLmE02TA9/HeCw3KEHIwicNuEfw=
+      -----END CERTIFICATE-----
+      -----BEGIN CERTIFICATE-----
+      MIIECDCCAvCgAwIBAgIDAIVCMA0GCSqGSIb3DQEBCwUAMIGPMQswCQYDVQQGEwJV
+      UzEQMA4GA1UEBwwHU2VhdHRsZTETMBEGA1UECAwKV2FzaGluZ3RvbjEiMCAGA1UE
+      CgwZQW1hem9uIFdlYiBTZXJ2aWNlcywgSW5jLjETMBEGA1UECwwKQW1hem9uIFJE
+      UzEgMB4GA1UEAwwXQW1hem9uIFJEUyBSb290IDIwMTkgQ0EwHhcNMTkwOTEzMTcw
+      NjQxWhcNMjQwODIyMTcwODUwWjCBlDELMAkGA1UEBhMCVVMxEzARBgNVBAgMCldh
+      c2hpbmd0b24xEDAOBgNVBAcMB1NlYXR0bGUxIjAgBgNVBAoMGUFtYXpvbiBXZWIg
+      U2VydmljZXMsIEluYy4xEzARBgNVBAsMCkFtYXpvbiBSRFMxJTAjBgNVBAMMHEFt
+      YXpvbiBSRFMgdXMtZWFzdC0yIDIwMTkgQ0EwggEiMA0GCSqGSIb3DQEBAQUAA4IB
+      DwAwggEKAoIBAQDE+T2xYjUbxOp+pv+gRA3FO24+1zCWgXTDF1DHrh1lsPg5k7ht
+      2KPYzNc+Vg4E+jgPiW0BQnA6jStX5EqVh8BU60zELlxMNvpg4KumniMCZ3krtMUC
+      au1NF9rM7HBh+O+DYMBLK5eSIVt6lZosOb7bCi3V6wMLA8YqWSWqabkxwN4w0vXI
+      8lu5uXXFRemHnlNf+yA/4YtN4uaAyd0ami9+klwdkZfkrDOaiy59haOeBGL8EB/c
+      dbJJlguHH5CpCscs3RKtOOjEonXnKXldxarFdkMzi+aIIjQ8GyUOSAXHtQHb3gZ4
+      nS6Ey0CMlwkB8vUObZU9fnjKJcL5QCQqOfwvAgMBAAGjZjBkMA4GA1UdDwEB/wQE
+      AwIBBjASBgNVHRMBAf8ECDAGAQH/AgEAMB0GA1UdDgQWBBQUPuRHohPxx4VjykmH
+      6usGrLL1ETAfBgNVHSMEGDAWgBRzX2DYvMsDmPQrFzQuNlqmYP+8HzANBgkqhkiG
+      9w0BAQsFAAOCAQEAUdR9Vb3y33Yj6X6KGtuthZ08SwjImVQPtknzpajNE5jOJAh8
+      quvQnU9nlnMO85fVDU1Dz3lLHGJ/YG1pt1Cqq2QQ200JcWCvBRgdvH6MjHoDQpqZ
+      HvQ3vLgOGqCLNQKFuet9BdpsHzsctKvCVaeBqbGpeCtt3Hh/26tgx0rorPLw90A2
+      V8QSkZJjlcKkLa58N5CMM8Xz8KLWg3MZeT4DmlUXVCukqK2RGuP2L+aME8dOxqNv
+      OnOz1zrL5mR2iJoDpk8+VE/eBDmJX40IJk6jBjWoxAO/RXq+vBozuF5YHN1ujE92
+      tO8HItgTp37XT8bJBAiAnt5mxw+NLSqtxk2QdQ==
+      -----END CERTIFICATE-----
+  mq:
+    kind: amazon-mq-apache-mq
+    host: b-a797a983-9218-45b7-89df-65efdb2d4270-1.mq.us-east-2.amazonaws.com:61617
+    queue: LoyaltyLevelChange
+  messaging:
+    autoscale: false
+    cpuThreshold: 75
+    enabled: true
+    image:
+      repository: 719273936648.dkr.ecr.us-east-2.amazonaws.com/ibmstocktrader/messaging
+      tag: latest
+    maxReplicas: 10
+    notification:
+      url: http://{{ .Release.Name }}-notification-service:9080/notification
+    replicas: 1
+  notificationSlack:
+    autoscale: false
+    cpuThreshold: 75
+    enabled: true
+    image:
+      repository: >-
+        719273936648.dkr.ecr.us-east-2.amazonaws.com/ibmstocktrader/notification-slack
+      tag: fec0109cd78058108c8a5a2e74046d4cec320174
+    maxReplicas: 10
+    replicas: 1
+  openwhisk:
+    url: >-
+      https://q2aq0eqss0.execute-api.us-east-2.amazonaws.com/default/PostLoyaltyLevelToSlack
+  kafka:
+    accountTopic: account
+    address: >-
+      b-1.stocktrader-msk-cluste.beyrsy.c7.kafka.us-east-2.amazonaws.com:9096,b-3.stocktrader-msk-cluste.beyrsy.c7.kafka.us-east-2.amazonaws.com:9096,b-2.stocktrader-msk-cluste.beyrsy.c7.kafka.us-east-2.amazonaws.com:9096
+    historyTopic: history
+    portfolioTopic: portfolio
+  jwt:
+    audience: stock-trader
+    issuer: 'http://stock-trader.ibm.com'
+  ldap:
+    baseDN: o=ibm.com
+    host: bluepages.ibm.com
+    port: 389
+    realm: BluePages
+  portfolio:
+    autoscale: false
+    cpuThreshold: 75
+    image:
+      repository: 719273936648.dkr.ecr.us-east-2.amazonaws.com/ibmstocktrader/portfolio
+      tag: e346cc0d6a0e
+    maxReplicas: 10
+    replicas: 2
+    url: 'http://{{ .Release.Name }}-portfolio-service:9080/portfolio'
+  watson:
+    url: >-
+      https://api.us-south.tone-analyzer.watson.cloud.ibm.com/instances/195be178-5f78-467f-8355-99ee5772f4c2/v3/tone?version=2017-09-21&sentences=false
+  brokerCQRS:
+    autoscale: false
+    cpuThreshold: 75
+    enabled: false
+    image:
+      repository: 719273936648.dkr.ecr.us-east-2.amazonaws.com/ibmstocktrader/broker-cqrs
+      tag: 6c52fc2ff5ccf56fd9b3308a955b59f84e61f429
+    maxReplicas: 10
+    replicas: 1
+    url: 'http://{{ .Release.Name }}-broker-cqrs-service:9080/brokerCQRS'
+  notificationTwitter:
+    autoscale: false
+    cpuThreshold: 75
+    enabled: false
+    image:
+      repository: >-
+        719273936648.dkr.ecr.us-east-2.amazonaws.com/ibmstocktrader/notification-twitter
+      tag: d59e9c656d8e61792dd448c0de9b3dc2583075dc
+    maxReplicas: 10
+    replicas: 1
+  collector:
+    autoscale: false
+    cpuThreshold: 75
+    enabled: false
+    image:
+      repository: 719273936648.dkr.ecr.us-east-2.amazonaws.com/ibmstocktrader/collector
+      tag: e6312561ab2a6f86c3738ac52df5a7b771d9a1b3
+    maxReplicas: 10
+    replicas: 1
+    url: 'http://{{ .Release.Name }}-collector-service:9080/collector'
+  account:
+    autoscale: false
+    cpuThreshold: 75
+    enabled: true
+    image:
+      repository: 719273936648.dkr.ecr.us-east-2.amazonaws.com/ibmstocktrader/account
+      tag: 80c900d837220050aa64348458a63d3be417c88b
+    maxReplicas: 10
+    replicas: 1
+    url: 'http://{{ .Release.Name }}-account-service:9080/account'
+  trader:
+    autoscale: false
+    cpuThreshold: 75
+    enabled: true
+    image:
+      repository: 719273936648.dkr.ecr.us-east-2.amazonaws.com/ibmstocktrader/trader
+      tag: "824409fb37e2bcbf2bb50990062df76bcf5badbc"
+    maxReplicas: 10
+    replicas: 1
+  tradeHistory:
+    autoscale: false
+    cpuThreshold: 75
+    enabled: false
+    image:
+      repository: >-
+        719273936648.dkr.ecr.us-east-2.amazonaws.com/ibmstocktrader/trade-history
+      tag: latest
+    maxReplicas: 10
+    replicas: 1
+    url: 'http://{{ .Release.Name }}-trade-history-service:9080/trade-history'
+  tradr:
+    autoscale: false
+    cpuThreshold: 75
+    enabled: false
+    image:
+      repository: quay.io/ibmstocktrader/tradr
+      tag: 1.0.0
+    maxReplicas: 10
+    replicas: 1
+  looper:
+    autoscale: false
+    cpuThreshold: 75
+    enabled: true
+    image:
+      repository: 719273936648.dkr.ecr.us-east-2.amazonaws.com/ibmstocktrader/looper
+      tag: e6bf894d2de55d13f49a3b7b1395840db7fe5acd
+    maxReplicas: 10
+    replicas: 1
+    url: http://{{ .Release.Name }}-looper-service:9080/looper
+  vault:
+    enabled: false
+    path: ceh/data/stocktrader/credentials
+    role: stocktrader
+  cloudant:
+    collector: evidence
+    database: account
+    url: >-
+      http://admin:ZdaRs4o8ORIQ@ip-10-2-9-5.us-east-2.compute.internal:5984
+  mongo:
+    authDB: admin
+    database: stocktraderhistory
+    ip: >-
+      stocktrader-documentdb-cluster.cluster-cvxl7y6djmce.us-east-2.docdb.amazonaws.com:27017
+    port: 27017
+  odm:
+    url: >-
+      https://odm-connect-cp4a.devops-prereqs-44-a01ee4194ed985a1e32b1d96fd4ae346-0000.us-east.containers.appdomain.cloud/DecisionService/rest/v1/ICP_Trader_Dev_1/determineLoyalty
+  oidc:
+    clientId: trader
+    clientSecret: 8a8d5681-1580-4461-a45b-d19fce955b02
+    discoveryUrl: >-
+      https://keycloak-keycloak.devops-prereqs-44-a01ee4194ed985a1e32b1d96fd4ae346-0000.us-east.containers.appdomain.cloud/auth/realms/master/.well-known/openid-configuration
+  broker:
+    autoscale: false
+    cpuThreshold: 75
+    image:
+      repository: 719273936648.dkr.ecr.us-east-2.amazonaws.com/ibmstocktrader/broker
+      tag: fd806ba39193e795ff9410631ca56f932e3f0b9a
+    maxReplicas: 10
+    replicas: 1
+    url: 'http://{{ .Release.Name }}-broker-service:9080/broker'
+  database:
+    db: stocktrader
+    host: >-
+      stocktrader-rds-aurora-instance-1.cvxl7y6djmce.us-east-2.rds.amazonaws.com
+    kind: postgres
+    port: 5432
+    ssl: false
+  redis:
+    cacheInterval: 60
+    urlWithCredentials: >-
+      rediss://master.stocktrader-redis-replication-group.kcjtaw.use2.cache.amazonaws.com:6379/0
+  stock-quote:
+    apiConnect: >-
+      https://gd5tqp34ng.execute-api.us-east-2.amazonaws.com/default/GetStockQuote
+    autoscale: false
+    cpuThreshold: 75
+    image:
+      repository: 719273936648.dkr.ecr.us-east-2.amazonaws.com/ibmstocktrader/stock-quote
+      tag: 46cbf3c3846e3bbda6426fb201c1422adf6b4924
+    maxReplicas: 10
+    replicas: 1

@@ -1,0 +1,44 @@
+# This workflow deploys StockTrder CR to OCP cluster in IBM Cloud
+#
+### Before you begin:
+# - Have access to AWS
+# - Your EKS Cluster must be provisioned
+# - Your target namespace must be created
+# - Have a secret in the above namespace titled `stock-trader-credentials`, which contains the realized contents of:
+#    https://github.com/IBMStockTrader/stocktrader-operator/blob/master/helm-charts/stocktrader/templates/credentials.yaml
+# - Have the StockTrader operator installed
+# - Have all the required services already deployed.
+# - Secret Access Key and ID set up in IAM and set up as repo secret (AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY)
+# - Secrets CLUSTER_NAMESPACE, AWS_REGION, and CLUSTER_NAME also set up in the repo.
+
+name: Deploy to EKS
+
+on: 
+  push:
+    branches:
+      - main 
+    paths-ignore:
+    - '.github/**'    
+
+# Environment variables available to all jobs and steps in this workflow
+env:
+  CLUSTER_NAMESPACE: ${{ secrets.CLUSTER_NAMESPACE }}
+  
+jobs:  
+  deploy-to-eks:
+    name: Deploy to AWS EKS Cluster
+    runs-on: ubuntu-latest
+    steps:
+    # Checkout repo   
+    - name: Checkout
+      uses: actions/checkout@v2
+
+      # Deploy CR to namespace
+    - name: Setup namespace in EKS
+      uses: ianbelcher/eks-kubectl-action@master
+      with:
+        aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws_region: ${{ secrets.AWS_REGION }}
+        cluster_name: ${{ secrets.CLUSTER_NAME }}
+        args: apply -f application/stocktrader-aws-eks-cr.yml -n ${CLUSTER_NAMESPACE}
