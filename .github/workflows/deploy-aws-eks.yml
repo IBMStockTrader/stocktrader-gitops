@@ -9,7 +9,9 @@
 # - Have the StockTrader operator installed
 # - Have all the required services already deployed.
 # - Secret Access Key and ID set up in IAM and set up as repo secret (AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY)
+#   - This user, where you generated the Secret Access Key and ID needs the eks:ListCluster and eks:DescribeCluster rights. (set this up in AWS IAM)
 # - Secrets AWS_CLUSTER_NAMESPACE, AWS_REGION, and AWS_CLUSTER_NAME also set up in the repo.
+
 
 name: Deploy to EKS
 
@@ -42,3 +44,5 @@ jobs:
         aws_region: ${{ secrets.AWS_REGION }}
         cluster_name: ${{ secrets.AWS_CLUSTER_NAME }}
         args: apply -f application/stocktrader-aws-eks-cr.yml -n ${CLUSTER_NAMESPACE}
+    - name: Display output
+      run: echo "{{ steps.kubectl.outputs.kubectl-out }}"
