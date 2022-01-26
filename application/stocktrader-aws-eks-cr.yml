@@ -1,7 +1,7 @@
 apiVersion: operators.ibm.com/v1
 kind: StockTrader
 metadata:
-  name: ceh
+  name: gitops-stocktrader
 spec:
   global:
     auth: basic
