@@ -265,3 +265,7 @@ spec:
     image:
       repository: quay.io/ibmstocktrader/notification-twitter
       tag: 924245b8afa6b21a0768bd9c28ffaae1badb50be
+  broker-query:
+    image:
+      repository: quay.io/ibmstocktrader/broker-query
+      tag: c23e56b0e42faebff2b04bc010c145e353bc84fd
