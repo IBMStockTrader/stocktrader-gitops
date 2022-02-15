@@ -199,8 +199,8 @@ spec:
     cpuThreshold: 75
     enabled: true
     image:
-      repository: 719273936648.dkr.ecr.us-east-2.amazonaws.com/ibmstocktrader/account
-      tag: 80c900d837220050aa64348458a63d3be417c88b
+      repository: /
+      tag: df8519438165d9e0a2c50229e6d9927565a236a6
     maxReplicas: 10
     replicas: 1
     url: 'http://{{ .Release.Name }}-account-service:9080/account'
