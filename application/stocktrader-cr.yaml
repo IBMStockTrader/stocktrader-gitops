@@ -268,4 +268,4 @@ spec:
   broker-query:
     image:
       repository: quay.io/ibmstocktrader/broker-query
-      tag: c23e56b0e42faebff2b04bc010c145e353bc84fd
+      tag: 7fa8fa04fcdcd72bd06ca8cffd9e6197f8e8496f
