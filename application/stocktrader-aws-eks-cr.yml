@@ -119,8 +119,8 @@ spec:
     cpuThreshold: 75
     enabled: true
     image:
-      repository: 719273936648.dkr.ecr.us-east-2.amazonaws.com/ibmstocktrader/messaging
-      tag: latest
+      repository: /
+      tag: a20715d50233278546ad0239610bf7f2bfe8db12
     maxReplicas: 10
     notification:
       url: http://{{ .Release.Name }}-notification-service:9080/notification
