@@ -113,6 +113,8 @@ spec:
   mq:
     kind: amazon-mq-apache-mq
     host: b-a797a983-9218-45b7-89df-65efdb2d4270-1.mq.us-east-2.amazonaws.com:61617
+    url: >-
+      failover:(ssl://b-27bf4b64-0550-47ad-81b9-dfe28f0729d1-1.mq.us-east-2.amazonaws.com:61617,ssl://b-27bf4b64-0550-47ad-81b9-dfe28f0729d1-2.mq.us-east-2.amazonaws.com:61617)
     queue: LoyaltyLevelChange
   messaging:
     autoscale: false
