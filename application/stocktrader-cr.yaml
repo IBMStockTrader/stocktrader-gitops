@@ -256,7 +256,7 @@ spec:
   stock-quote:
     image:
       repository: quay.io/ibmstocktrader/stock-quote
-      tag: 72ad2d6d2e301f109e330a8461a732ed54c5f7f7
+      tag: b20c16b0504f2dc25bb85788f162c04bdf526f6b
   notification-slack:
     image:
       repository: quay.io/ibmstocktrader/notification-slack
