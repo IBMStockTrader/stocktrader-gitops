@@ -200,7 +200,7 @@ spec:
     enabled: true
     image:
       repository: /
-      tag: 4e5a236346ac165c12366a6b217d9e81e77a5028
+      tag: 0dd4ec2c49a5572f892ff7ebd7b23cdfe5172b93
     maxReplicas: 10
     replicas: 1
     url: 'http://{{ .Release.Name }}-account-service:9080/account'
