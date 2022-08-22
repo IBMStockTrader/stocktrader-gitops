@@ -166,7 +166,7 @@ spec:
     enabled: true
     image:
       repository: quay.io/ibmstocktrader/account
-      tag: b97d79aaf240b7aedb9ffdef66b3b7b8da1245fc
+      tag: 733bceb26552a355675d36a286793a3efe0a11d6
     maxReplicas: 10
     replicas: 2
     url: 'http://{{ .Release.Name }}-account-service:9080/account'
