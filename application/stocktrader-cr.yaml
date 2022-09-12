@@ -252,7 +252,7 @@ spec:
   trade-history:
     image:
       repository: quay.io/ibmstocktrader/trade-history
-      tag: 4c8acf6f8a58955743126c280f774c25e8fb0242
+      tag: 0a95b07c89cc032b65721cf7c35b3f9bef509fe6
   stock-quote:
     image:
       repository: quay.io/ibmstocktrader/stock-quote
