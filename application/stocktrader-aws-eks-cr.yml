@@ -120,7 +120,7 @@ spec:
     enabled: true
     image:
       repository: /
-      tag: 1065d832767e29203e19b86936d2d8c3015775f3
+      tag: 12b1b43ce2bc08a017d7b1e38a7a16119ae2d154
     maxReplicas: 10
     notification:
       url: http://{{ .Release.Name }}-notification-service:9080/notification
