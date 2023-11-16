@@ -124,7 +124,7 @@ spec:
     cpuThreshold: 75
     image:
       repository: quay.io/ibmstocktrader/portfolio
-      tag: e773062b43a8978051fdecf644b63675722e96a9
+      tag: 9a79a57f0bd42bee31756ea75e2189fcd420977d
     maxReplicas: 10
     replicas: 2
     url: 'http://{{ .Release.Name }}-portfolio-service:9080/portfolio'
