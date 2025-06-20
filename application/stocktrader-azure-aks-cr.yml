@@ -1,0 +1,305 @@
+apiVersion: operators.ibm.com/v1
+kind: StockTrader
+metadata:
+  name: gitops-stocktrader
+spec:
+  global:
+    auth: basic
+    healthCheck: true
+    monitoring: true
+    ingress: false
+    route: false
+    traceSpec: "*=info"
+    jsonLogging: true
+    istio: false
+    istioNamespace: istio-system
+    externalConfigMap: false
+    configMapName: "{{ .Release.Name }}-config"
+    externalSecret: true
+    secretName: cjot-credentials
+    proxyServer: false
+    proxyServerAddress: <your proxy URL>
+    pullSecret: false
+    pullSecretName: <your pull secret>
+    specifyCerts: true
+    certs: |
+      -----BEGIN CERTIFICATE-----
+      MIICrDCCAZQCCQD05bVQh8g0yzANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1h
+      Y2lkLnphbGFuLmRvMB4XDTIzMDYxMzA0NTMxMVoXDTIzMDcxMzA0NTMxMVowGDEW
+      MBQGA1UEAwwNYWNpZC56YWxhbi5kbzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCC
+      AQoCggEBALpXSlhPJ7nkd5ks4YjKl2rtMiG5d7ZnaunHGbpYaL5LkQ59jfNHClUe
+      seOyV25rmuuNJ2ep525lBEdUcNJHk25I1A/kZ3ScnuUy5/0QGIS4jgvS4n0yIkHa
+      CtgiWg1fDKVlLA6A77QZlxxgjLIKWsQCNNBVA9+1OOf60g6khmzr7cruQqGH+6os
+      EkE5qdH+0/G8Lz7y71EbpcHoZrNrbS5i/jFtebF3luzIFX1rpF7bJnMqjJzdGVl2
+      jRxxAyvrQrKeeSnDDwS5pNHqD++FZkHuqBdj+KI7conFzrdFpLRvFcsyhnWkfs3h
+      czY2/8ypgP2Vq1ONA7zWbYbY42rCl2UCAwEAATANBgkqhkiG9w0BAQsFAAOCAQEA
+      Y6uZe4ucgevP4LVwbt6seYrsmU1ibL8jbWsRJj1EVZXBWJ5MZ/xZPzTCIr+k/GKC
+      6mBNQwNFm5mG23w+SinM/fqpIA5K21V9f6y+Kxm9AoaQjAVTaXNRloank4tIsdXi
+      mWJ8qr4EJaQfJwNKTtPv3J7wp8d4g17IpN+BDCbyM/tYZ1kfbT8NRVvja/2K0z7M
+      FcAehtnrhCtb4cI6cLmW5PNs9WldfWsyKdRH9lw9n6cgaBUt9P9mbuRh0MqkUtTk
+      ADLl/D9JQo/6guxq8HqY7aTDoh07J+HgGIIMl4/LTe3FVnkCfwVkz3V+1DSCXZDc
+      tte4udT5PVAhmCtsBAtpTg==
+      -----END CERTIFICATE-----
+      -----BEGIN CERTIFICATE-----
+      MIICqTCCAZOgAwIBAgIJAM72q+3AMGHCMAsGCSqGSIb3DQEBCzAUMRIwEAYDVQQD
+      Ewlsb2NhbGhvc3QwIhgPMjAyMzA5MTUxODA3MDVaGA8yMDMzMDkxMjE4MDcwNVow
+      FDESMBAGA1UEAxMJbG9jYWxob3N0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB
+      CgKCAQEA1tgQnFmgXdTbkEyVqkIxMtTQ4dWq25jMQm3lxL+0Qn5hqfZ2w48aFC5X
+      b5UuDadN9TbYebFJwo6tYsR9wOTAP0XSM6LLhSG/6xPOw8Os0UUnOd5NcrMShiX9
+      u2DksLQB36S8imf5c0won9payFcyLzahjfwhih8WQf9W5/CBSJqo/L7bi99SMhUg
+      f7zfREtAKlLolTNOxLcC3CaSIAK4+p2lpGKZW5oDEMdJPsShO6niQyuLY5WSoxgE
+      Abw45M5H3IOGA6V5KsS2khDySvZ7ls+6REI/OzBvUVNCPDVn5QyFUDMFH0BaAaVd
+      DhT0gvjqz2JEHEq7v9MBK726MtBpmwIDAQABMAsGCSqGSIb3DQEBCwOCAQEAKdqB
+      hG7ko4ZAx17hv5Jdf7QlyoPlIWYGn/Ii7JYHWP1p8hXHx1En8m/lX6CsukLCz/9y
+      WX5FYjKtGGw8DH/YScKP7fHg2BsYVLZADygxtCFZdp3eXv1JXyITi4OOsyOhp1dO
+      b8OPI108gikl0pe+BrNFZwafLSS/wxPVcEotLBOcqV6a8NTJyvkg47dLr/XUC8NY
+      MKZ2dEL/nI0amLWx/W3mEodqz2wODoEc/sziEIP7o7GAf3rfZoPzeINfdNI59zN1
+      rJVsZa2j4vyk4/vl/TRsaYEQrSEoqjebNePBsZ9WdfB8jB/R3Rw1vAjQIkftVQCv
+      n1bR3uO2R8BTK8JLfw==
+      -----END CERTIFICATE-----
+      -----BEGIN CERTIFICATE-----
+      MIICqDCCAZKgAwIBAgIIUv/2xHF+w3YwCwYJKoZIhvcNAQELMBQxEjAQBgNVBAMT
+      CWxvY2FsaG9zdDAiGA8yMDI0MDExNjE2MTQ1OFoYDzIwMzQwMTEzMTYxNDU4WjAU
+      MRIwEAYDVQQDEwlsb2NhbGhvc3QwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK
+      AoIBAQDAUhfNGoGxGhXTFDvGwZCn7qSGqUQxskV3+deaqRUGwM7VJvF8s7JJrKdf
+      gOkkDXfzSg28c9kZwIj1vjqNdfiK6wcEW/Md8g8FOWrx+IPmZFkbnye0iQM3eLz8
+      Gisz3snHziImYE71xfziB5mUvCiEGdhWfdP0Bekro3aMCgCSinIWKoOcG9H93hde
+      hG48SOddYbAEUKLqnSvGuFD+nNRNKkEOtHKcOxbmPMSVZM2TrLLLZWAf0b/71eJ0
+      8q3S9YeGbpeuFmW0/AjYVZTD5yJe91AE3C5YkSxhvYBGd90FnH8Jo/IaCg7QDM+B
+      qUwBvRD1Esh/TQa0/YZm6KdZdXKzAgMBAAEwCwYJKoZIhvcNAQELA4IBAQBfU8eG
+      VZsgmbRivqLDcJZbuOEBGAZaYCd6VoNAKQUAhJbTfvf3RWE+k/C5PrjgLqOXkxSy
+      Fv+OniQGAYFFiB7s621WeKD2C6V+H7GkmAEi90FudkjvSmXy6HrSGxlQISGimTDT
+      Y3sSpQWZg4uKfNzz0fuYzfXcwriv11+zbX1J6HYxsJ6U44KUHvZ5w/Gx9W2hyJiA
+      PV+/4EEH3ZwzYqdDL/v8IJbFjopULirodlufPIdb0dSLjra9ZK4wPuM8CrkjYDao
+      L0KIQLJCDauDkw4+UDA1NEwMYwoYquGavjYdYAjuRiErGIKuOuHPdmV6mXCzVEYV
+      8OR4Jj8zp63XL1e2
+      -----END CERTIFICATE-----
+      -----BEGIN CERTIFICATE-----
+      MIILITCCCQmgAwIBAgITMwFykmc+oYO6K+igEgAAAXKSZzANBgkqhkiG9w0BAQwF
+      ADBdMQswCQYDVQQGEwJVUzEeMBwGA1UEChMVTWljcm9zb2Z0IENvcnBvcmF0aW9u
+      MS4wLAYDVQQDEyVNaWNyb3NvZnQgQXp1cmUgUlNBIFRMUyBJc3N1aW5nIENBIDA3
+      MB4XDTI1MDIyODE1MTA1MloXDTI1MDgyNzE1MTA1MlowgYIxCzAJBgNVBAYTAlVT
+      MQswCQYDVQQIEwJXQTEQMA4GA1UEBxMHUmVkbW9uZDEeMBwGA1UEChMVTWljcm9z
+      b2Z0IENvcnBvcmF0aW9uMTQwMgYDVQQDEytjcjEzLmVhc3R1czEtYS5jb250cm9s
+      LmRhdGFiYXNlLndpbmRvd3MubmV0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB
+      CgKCAQEAwc5U2NL5ykBelD8Up1f/ZT7OC3kfBwqZF0A7GxDv+FAo+3hVOTqIwGNL
+      5Kfu0kwweMl3+xcqNcSlL1oVHoL0KDEVPTMgMP592wxtp19lLShr6eMec8coxJ/A
+      peJj0BaWm6jnlg1HZxSXDJktZqCoqLlYofcz6QyRyJuVivOw1SuiK8ShLjN37TjH
+      2DZD6KpHCqz366XSFKPoz8GMzdvyyNtfiE8zrxl7GoiMVaBLpG3Xk5uGEo+MrIO3
+      +QS6jj5Ep0lvjVJYiYClPzj9txnhro7bMbSR0duXgabANGEVDL1ZOxY8Yn+cdhgA
+      VKY6Fve/PNHJb6rgFiLpI2HPw9G4TQIDAQABo4IGsjCCBq4wggF9BgorBgEEAdZ5
+      AgQCBIIBbQSCAWkBZwB1ABLxTjS9U3JMhAYZw48/ehP457Vih4icbTAFhOvlhiY6
+      AAABlU0ldbAAAAQDAEYwRAIgSwspg7qJ2czlvSnZUUatsOqvcPXwHQ6tZdlp/0Jb
+      tPcCIFYLms087cTnoiX5P3qTofmtec0uAptYrG/sB7UasVwyAHcAfVkeEuF4Knsc
+      YWd8Xv340IdcFKBOlZ65Ay/ZDowuebgAAAGVTSV2WAAABAMASDBGAiEA4YNbZAKb
+      asT8GXkIQRnllGu9lT3dUxebtUZAE1IjM40CIQCDRmawCDn1VzFCokfzzrsBARU9
+      G7NSBXWGTIrXX+H4HwB1ABoE/0nQVB1Ar/agw7/x2MRnL07s7iNAaJhrF0Au3Il9
+      AAABlU0ldlAAAAQDAEYwRAIgPAolmNjB2qa4WyfHD2VH/NhPpXswbg8szzm+0V71
+      IM8CICdt2UiQS6RH+tRAZN+QAgkk7UEWZhECUeMyvHEoppPWMCcGCSsGAQQBgjcV
+      CgQaMBgwCgYIKwYBBQUHAwIwCgYIKwYBBQUHAwEwPAYJKwYBBAGCNxUHBC8wLQYl
+      KwYBBAGCNxUIh73XG4Hn60aCgZ0ujtAMh/DaHV2Cq+cwh+3xHwIBZAIBLTCBtAYI
+      KwYBBQUHAQEEgacwgaQwcwYIKwYBBQUHMAKGZ2h0dHA6Ly93d3cubWljcm9zb2Z0
+      LmNvbS9wa2lvcHMvY2VydHMvTWljcm9zb2Z0JTIwQXp1cmUlMjBSU0ElMjBUTFMl
+      MjBJc3N1aW5nJTIwQ0ElMjAwNyUyMC0lMjB4c2lnbi5jcnQwLQYIKwYBBQUHMAGG
+      IWh0dHA6Ly9vbmVvY3NwLm1pY3Jvc29mdC5jb20vb2NzcDAdBgNVHQ4EFgQUlwzs
+      L0S+7rTN6/PPpnD+HMsny5owDgYDVR0PAQH/BAQDAgWgMIICugYDVR0RBIICsTCC
+      Aq2CLSouY3IxMy5lYXN0dXMxLWEuY29udHJvbC5kYXRhYmFzZS53aW5kb3dzLm5l
+      dIImZWFzdHVzMS1hLmNvbnRyb2wuZGF0YWJhc2Uud2luZG93cy5uZXSCKCouZWFz
+      dHVzMS1hLmNvbnRyb2wuZGF0YWJhc2Uud2luZG93cy5uZXSCFiouZGF0YWJhc2Uu
+      d2luZG93cy5uZXSCHSouZGF0YWJhc2Uuc2VjdXJlLndpbmRvd3MubmV0giAqLnNl
+      Y29uZGFyeS5kYXRhYmFzZS53aW5kb3dzLm5ldIIcKi5tYXJpYWRiLmRhdGFiYXNl
+      LmF6dXJlLmNvbYIaKi5teXNxbC5kYXRhYmFzZS5henVyZS5jb22CHSoucG9zdGdy
+      ZXMuZGF0YWJhc2UuYXp1cmUuY29tghgqLnNxbC5wcm9qZWN0YXJjYWRpYS5uZXSC
+      Fiouc3FsLmF6dXJlc3luYXBzZS5uZXSCHiouc3FsLmF6dXJlc3luYXBzZS1kb2dm
+      b29kLm5ldIIcKi5kYXRhYmFzZS1mbGVldC53aW5kb3dzLm5ldIImKi5zZWNvbmRh
+      cnkuZGF0YWJhc2UtZmxlZXQud2luZG93cy5uZXSCICouZHVhbHN0YWNrLmRhdGFi
+      YXNlLndpbmRvd3MubmV0giUqLmRhaWx5LWRhdGFiYXNlLmZhYnJpYy5taWNyb3Nv
+      ZnQuY29tgiMqLmR4dC1kYXRhYmFzZS5mYWJyaWMubWljcm9zb2Z0LmNvbYIkKi5t
+      c2l0LWRhdGFiYXNlLmZhYnJpYy5taWNyb3NvZnQuY29tgh8qLmRhdGFiYXNlLmZh
+      YnJpYy5taWNyb3NvZnQuY29tgitjcjEzLmVhc3R1czEtYS5jb250cm9sLmRhdGFi
+      YXNlLndpbmRvd3MubmV0MAwGA1UdEwEB/wQCMAAwagYDVR0fBGMwYTBfoF2gW4ZZ
+      aHR0cDovL3d3dy5taWNyb3NvZnQuY29tL3BraW9wcy9jcmwvTWljcm9zb2Z0JTIw
+      QXp1cmUlMjBSU0ElMjBUTFMlMjBJc3N1aW5nJTIwQ0ElMjAwNy5jcmwwZgYDVR0g
+      BF8wXTBRBgwrBgEEAYI3TIN9AQEwQTA/BggrBgEFBQcCARYzaHR0cDovL3d3dy5t
+      aWNyb3NvZnQuY29tL3BraW9wcy9Eb2NzL1JlcG9zaXRvcnkuaHRtMAgGBmeBDAEC
+      AjAfBgNVHSMEGDAWgBTOFRY76gKjpmva2Sv95YxSvnpQqDAdBgNVHSUEFjAUBggr
+      BgEFBQcDAgYIKwYBBQUHAwEwDQYJKoZIhvcNAQEMBQADggIBAHkfFt19DXF4HH7Z
+      V7goYtczypUM+OGlKPs8ODOmJekZqepHSpwWQX6JfzbI4OQ/2rQARCnWnzHUa6hp
+      7Lnq8BhilQQkqjQgOPEN+fI+rOGsOe4u7gk3YAdivazX4j1kZXxhC0hgJo3JDASh
+      Sr35IBmG3vvo0GkGZD1SEnumpLQQZtThjrvX5yrpGPfuViWlL6sAHckZWwVPdyak
+      nnJaYoSlDRQJ+70vzETYmZAAsYA4jMHqYXJUn094vlywrRIAtgB15mh8F5UHErsG
+      pB9O0F5UkdeUHjJgZsT5jzwyBTAw5RlzaGvNaea0TyrAD6lrmnE14oD2PVJKA4Vn
+      9TbcEIZMkGRiVjqGlumrQC+WgwfYsFMkwRnDIyS4d+rrRWjHq5fIlnZTCCijVmK6
+      zo83pfPdovppVlV+hdtEQM8YHcjTC2qg2NLieTLw6SUSlujpBZtoSssvADPvQAJm
+      cXkqEZIXtL9hYyd2Az6lvqysQFBHCqAsXH4MFRUvVfBWqM6OatXJdM/ILstaw/3I
+      8whsmT3ziqdxYfjpdyxBCQZ8TTIub+YNwXo3KUUrbXeg/GNOgBf02imRCxWpCMN/
+      vF/tyY+U3xVQsIjh1OJ9IWFivTpzJ516jochHx7lrnduaOvuCMYMqfLoDOApvY6u
+      e1SbY6V1CrpMEM/T3l3CPy3q6mNh
+      -----END CERTIFICATE-----
+  mq:
+    channel: DEV.APP.SVRCONN
+    host: mqtrader1-mqtrader1
+    kind: ibm-mq
+    port: 1414
+    queue: NotificationQ
+    queueManager: stocktrader
+  messaging:
+    autoscale: false
+    cpuThreshold: 75
+    enabled: false
+    image:
+      repository: kyncjot.azurecr.io/messaging
+      tag: 1.0.0
+    maxReplicas: 10
+    notification:
+      url: http://{{ .Release.Name }}-notification-service:9080/notification
+    replicas: 1
+  notificationSlack:
+    autoscale: false
+    cpuThreshold: 75
+    enabled: false
+    image:
+      repository: kyncjot.azurecr.io/notification-slack
+      tag: 1.0.0
+    maxReplicas: 10
+    replicas: 1
+  openwhisk:
+    url: https://openwhisk.ng.bluemix.net/api/v1/namespaces/jalcorn%40us.ibm.com_dev/actions/PostLoyaltyLevelToSlack
+  kafka:
+    accountTopic: account
+    brokerTopic: broker
+    historyTopic: history
+    portfolioTopic: portfolio
+  jwt:
+    audience: stock-trader
+    issuer: http://stock-trader.ibm.com
+  ldap:
+    baseDN: o=ibm.com
+    host: bluepages.ibm.com
+    port: 389
+    realm: BluePages
+  portfolio:
+    autoscale: false
+    cpuThreshold: 75
+    image:
+      repository: kyncjot.azurecr.io/portfolio
+      tag: 27c5eae47313c57e5ec72df8ffe94a801d523e1b
+    maxReplicas: 10
+    replicas: 1
+    url: http://{{ .Release.Name }}-portfolio-service:9080/portfolio
+  watson:
+    url: https://gateway.watsonplatform.net/tone-analyzer/api/v3/tone?version=2017-09-21&sentences=false
+  notificationTwitter:
+    autoscale: false
+    cpuThreshold: 75
+    enabled: false
+    image:
+      repository: kyncjot.azurecr.io/notification-twitter
+      tag: 1.0.0
+    maxReplicas: 10
+    replicas: 1
+  account:
+    autoscale: false
+    cpuThreshold: 75
+    enabled: false
+    image:
+      repository: kyncjot.azurecr.io/account
+      tag: 1.0.0
+    maxReplicas: 10
+    replicas: 1
+    url: http://{{ .Release.Name }}-account-service:9080/account
+  cashAccount:
+    autoscale: false
+    cpuThreshold: 75
+    enabled: true
+    exchangeRateUrl: https://api.frankfurter.app/latest
+    image:
+      repository: kyncjot.azurecr.io/cash-account
+      tag: 1.0.0
+    maxReplicas: 10
+    replicas: 1
+    url: http://{{ .Release.Name }}-cash-account-service:8080/cash-account
+  trader:
+    autoscale: false
+    cpuThreshold: 75
+    enabled: true
+    image:
+      repository: kyncjot.azurecr.io/trader
+      tag: e3fb7d4a211d5f22305184145ad20b2b79eb75a1
+    maxReplicas: 10
+    replicas: 1
+  tradeHistory:
+    autoscale: false
+    cpuThreshold: 75
+    enabled: false
+    image:
+      repository: kyncjot.azurecr.io/trade-history
+      tag: 1.0.0
+    maxReplicas: 10
+    replicas: 1
+    url: http://{{ .Release.Name }}-trade-history-service:9080/trade-history
+  tradr:
+    autoscale: false
+    cpuThreshold: 75
+    enabled: false
+    image:
+      repository: kyncjot.azurecr.io/tradr
+      tag: 1.0.0
+    maxReplicas: 10
+    replicas: 1
+  looper:
+    autoscale: false
+    cpuThreshold: 75
+    enabled: true
+    image:
+      repository: kyncjot.azurecr.io/looper
+      tag: 1.0.0
+    maxReplicas: 10
+    replicas: 1
+    url: http://{{ .Release.Name }}-looper-service:9080/looper
+  vault:
+    enabled: false
+    jwtPath: /var/run/secrets/kubernetes.io/serviceaccount
+  cloudant:
+    database: account
+    url: http://account-couchdb:5984
+  mongo:
+    authDB: <your Mongo auth database>
+    database: <your Mongo database>
+    ip: <your Mongo IP>
+    port: 27017
+  odm:
+    url: https://stocktraderfunctions.azurewebsites.net/api/GetLoyaltyLevel
+  oidc:
+    clientId: stock-trader
+    discoveryUrl: https://20.75.190.79:8443/auth/realms/cjot/.well-known/openid-configuration
+    jwksUrl: https://20.75.190.79:8443/auth/realms/cjot/protocol/openid-connect/certs
+  broker:
+    autoscale: false
+    cpuThreshold: 75
+    image:
+      repository: kyncjot.azurecr.io/broker
+      tag: 1.0.0
+    maxReplicas: 10
+    replicas: 1
+    url: http://{{ .Release.Name }}-broker-service:9080/broker
+  database:
+    db: postgres
+    kind: postgres
+    port: 5432
+    ssl: false
+  redis:
+    cacheInterval: 60
+  stockQuote:
+    apiConnect: https://gd5tqp34ng.execute-api.us-east-2.amazonaws.com/default/GetStockQuote
+    autoscale: false
+    cpuThreshold: 75
+    encryption:
+      class: noneEncryptor
+    iexTrading: https://cloud.iexapis.com/stable/stock
+    image:
+      repository: kyncjot.azurecr.io/stock-quote
+      tag: 1.0.0
+    maxReplicas: 10
+    replicas: 1
+    url: http://{{ .Release.Name }}-stock-quote-service:9080/stock-quote
