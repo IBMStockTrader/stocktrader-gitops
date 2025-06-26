@@ -121,8 +121,8 @@ spec:
     cpuThreshold: 75
     enabled: true
     image:
-      repository: 719273936648.dkr.ecr.us-east-2.amazonaws.com/ibmstocktrader/messaging
-      tag: latest
+      repository: /
+      tag: 78868d536111b361223bd8ce8cb3443255127a20
     maxReplicas: 10
     notification:
       url: http://{{ .Release.Name }}-notification-service:9080/notification
@@ -201,8 +201,8 @@ spec:
     cpuThreshold: 75
     enabled: true
     image:
-      repository: 719273936648.dkr.ecr.us-east-2.amazonaws.com/ibmstocktrader/account
-      tag: 80c900d837220050aa64348458a63d3be417c88b
+      repository: /
+      tag: 8ef68f0dcb4b408dd6e6c01eb91fc5c53cab00a5
     maxReplicas: 10
     replicas: 1
     url: 'http://{{ .Release.Name }}-account-service:9080/account'

@@ -76,7 +76,7 @@ spec:
     enabled: true
     image:
       repository: quay.io/ibmstocktrader/messaging
-      tag: 1ee06224aa35aca9bce49e908f03d31750d570b0
+      tag: 58c327d04c647c76f3f2672e4fc861f3adc97335
     maxReplicas: 10
     notification:
       url: 'http://{{ .Release.Name }}-notification-service:9080/notification'
@@ -124,7 +124,7 @@ spec:
     cpuThreshold: 75
     image:
       repository: quay.io/ibmstocktrader/portfolio
-      tag: b2ff44c958aebd95d7d9c88db1fc214b4ce5ae30
+      tag: 3af1362caee5d0d0cbbd3e6df496907235ecb4ff
     maxReplicas: 10
     replicas: 2
     url: 'http://{{ .Release.Name }}-portfolio-service:9080/portfolio'
@@ -166,7 +166,7 @@ spec:
     enabled: true
     image:
       repository: quay.io/ibmstocktrader/account
-      tag: b0e0ff16f92c7bb309cd69f7040e3de626701f77
+      tag: 8ef68f0dcb4b408dd6e6c01eb91fc5c53cab00a5
     maxReplicas: 10
     replicas: 2
     url: 'http://{{ .Release.Name }}-account-service:9080/account'
@@ -236,7 +236,7 @@ spec:
     cpuThreshold: 75
     image:
       repository: quay.io/ibmstocktrader/broker
-      tag: fd806ba39193e795ff9410631ca56f932e3f0b9a
+      tag: 1edeb86dc4357b260a3c59afb2c948194da144e1
     maxReplicas: 10
     replicas: 2
     url: 'http://{{ .Release.Name }}-broker-service:9080/broker'
@@ -256,12 +256,16 @@ spec:
   stock-quote:
     image:
       repository: quay.io/ibmstocktrader/stock-quote
-      tag: 72ad2d6d2e301f109e330a8461a732ed54c5f7f7
+      tag: 6cda3a743dc2556141392ba8a0fe9b032d9e3175
   notification-slack:
     image:
       repository: quay.io/ibmstocktrader/notification-slack
-      tag: 1db1b8b11f778d44f40b76eda5d14c24970d6e3d
+      tag: b8984d7c2333e39975f8e2f40d8279a1653d9d69
   notification-twitter:
     image:
       repository: quay.io/ibmstocktrader/notification-twitter
-      tag: 924245b8afa6b21a0768bd9c28ffaae1badb50be
+      tag: a23b10ae4d2406f0974fa06cc23130befb3a4689
+  broker-query:
+    image:
+      repository: quay.io/ibmstocktrader/broker-query
+      tag: 9a6a7203c2610237c732946eb7638f944a1f0b6c
