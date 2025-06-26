@@ -1,0 +1,58 @@
+# This workflow deploys StockTrader CR to AKS cluster in Azure
+#
+### Before you begin:
+# - Have access to Azure
+# - Your AKS Cluster must be provisioned
+# - Your target namespace must be created
+# - Have a secret in the above namespace titled `cjot-credentials`
+# - Have the StockTrader operator installed
+# - Have all the required services already deployed.
+# - Azure credentials set up as repo secrets (AZURE_CLIENT_ID, AZURE_TENANT_ID, AZURE_SUBSCRIPTION_ID)
+# - Secrets AZURE_CLUSTER_NAMESPACE, AZURE_RESOURCE_GROUP, and AZURE_CLUSTER_NAME also set up in the repo.
+
+name: Deploy to AKS
+
+on: 
+  push:
+    branches:
+      - main 
+    paths-ignore:
+    - '.github/**' 
+
+permissions:
+  id-token: write
+  contents: read
+
+# Environment variables available to all jobs and steps in this workflow
+env:
+  CLUSTER_NAMESPACE: ${{ secrets.AZURE_CLUSTER_NAMESPACE }}
+  
+jobs:  
+  deploy-to-aks:
+    name: Deploy to Azure AKS Cluster
+    runs-on: ubuntu-latest
+    steps:
+    # Checkout repo   
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    # Azure Login
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        enable-AzPSSession: true
+
+    # Get AKS credentials
+    - name: Get AKS Credentials
+      uses: azure/aks-set-context@v3
+      with:
+        cluster-name: ${{ secrets.AZURE_CLUSTER_NAME }}
+        resource-group: ${{ secrets.AZURE_RESOURCE_GROUP }}
+
+    # Deploy CR to namespace
+    - name: Deploy to AKS
+      run: |
+        kubectl apply -f application/stocktrader-azure-aks-cr.yml -n ${CLUSTER_NAMESPACE}
