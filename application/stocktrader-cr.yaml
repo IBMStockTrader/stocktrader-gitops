@@ -236,7 +236,7 @@ spec:
     cpuThreshold: 75
     image:
       repository: quay.io/ibmstocktrader/broker
-      tag: 1edeb86dc4357b260a3c59afb2c948194da144e1
+      tag: 20e620b32b4d78cd23ebdcd05d956c96c7d83730
     maxReplicas: 10
     replicas: 2
     url: 'http://{{ .Release.Name }}-broker-service:9080/broker'
