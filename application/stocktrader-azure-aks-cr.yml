@@ -253,7 +253,7 @@ spec:
     enabled: true
     image:
       repository: kyncjot.azurecr.io/looper
-      tag: 1.0.0
+      tag: c7b01e4c75237b54dfe566aadf80a6589ea29de3
     maxReplicas: 10
     replicas: 1
     url: http://{{ .Release.Name }}-looper-service:9080/looper
