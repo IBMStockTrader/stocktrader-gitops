@@ -214,8 +214,8 @@ spec:
     enabled: true
     exchangeRateUrl: https://api.frankfurter.app/latest
     image:
-      repository: kyncjot.azurecr.io/cash-account
-      tag: 1.0.0
+      repository: kyncjot.azurecr.io/cjot/cash-account
+      tag: 8c33bdfe99ea94ec351e562268814db2b4fb6930
     maxReplicas: 10
     replicas: 1
     url: http://{{ .Release.Name }}-cash-account-service:8080/cash-account
