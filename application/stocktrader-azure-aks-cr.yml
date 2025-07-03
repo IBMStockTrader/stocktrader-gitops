@@ -303,7 +303,3 @@ spec:
     maxReplicas: 10
     replicas: 1
     url: http://{{ .Release.Name }}-stock-quote-service:9080/stock-quote
-  stock-quote:
-    image:
-      repository: kyncjot.azurecr.io/stock-quote
-      tag: f51fdbc30d98cc91a7c12e8efdd140568632251b
