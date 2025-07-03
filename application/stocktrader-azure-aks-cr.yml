@@ -204,7 +204,7 @@ spec:
     enabled: false
     image:
       repository: kyncjot.azurecr.io/cjot/account
-      tag: bee6a5b0919178a0ce9406560c7374d0e47b2a2c
+      tag: e3d9f48d1554b3be9e71e3c7a6be8dfdd5017e47
     maxReplicas: 10
     replicas: 1
     url: http://{{ .Release.Name }}-account-service:9080/account
