@@ -298,8 +298,8 @@ spec:
       class: noneEncryptor
     iexTrading: https://cloud.iexapis.com/stable/stock
     image:
-      repository: kyncjot.azurecr.io/stock-quote
-      tag: 1.0.0
+      repository: kyncjot.azurecr.io/cjot/stock-quote
+      tag: 1f0c4c859c0bc4ac27043ad155640e7332e398fe
     maxReplicas: 10
     replicas: 1
     url: http://{{ .Release.Name }}-stock-quote-service:9080/stock-quote
