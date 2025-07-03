@@ -252,8 +252,8 @@ spec:
     cpuThreshold: 75
     enabled: true
     image:
-      repository: kyncjot.azurecr.io/looper
-      tag: c7b01e4c75237b54dfe566aadf80a6589ea29de3
+      repository: kyncjot.azurecr.io/cjot/looper
+      tag: 29201e393284c2a33b4224d2766b41b3eaa98bf2
     maxReplicas: 10
     replicas: 1
     url: http://{{ .Release.Name }}-looper-service:9080/looper
