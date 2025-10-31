@@ -298,3 +298,7 @@ spec:
       tag: 46cbf3c3846e3bbda6426fb201c1422adf6b4924
     maxReplicas: 10
     replicas: 1
+  portfolio-assistant:
+    image:
+      repository: /
+      tag: 349e622abce6f2c3979479d74d79e650d6a2c673
